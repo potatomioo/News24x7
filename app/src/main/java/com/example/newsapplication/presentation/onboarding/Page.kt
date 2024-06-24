@@ -20,11 +20,11 @@ val pages = listOf(
     Page(
         Title = "Hey Potatomioo",
         Description = "Wish you a good day",
-        Image = R.drawable.Men
+        Image = R.drawable.men
     ),
     Page(
         Title = "Hey Potatomioo",
         Description = "Wish you a good day",
-        Image = R.drawable.View
+        Image = R.drawable.view
     )
 )

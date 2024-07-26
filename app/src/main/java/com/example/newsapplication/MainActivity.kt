@@ -6,6 +6,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.newsapplication.presentation.onboarding.components.OnboardingScreen
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,3 +23,8 @@ class MainActivity : ComponentActivity() {
 private fun final() {
     OnboardingScreen()
 }
+
+// Clean architecture has three layers as Presentation, Data and Domain.
+// Presentation is bigger can access data and domain both.
+// Data is second layer, only can access domain.
+// Domain is the inner layer,can not access any other layer.

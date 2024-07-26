@@ -1,6 +1,5 @@
 package com.example.newsapplication.presentation.onboarding.components
 
-import android.util.Size
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,12 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.DpSize
 import androidx.compose.ui.unit.dp
-import androidx.core.view.ViewCompat.ScrollIndicators
-import com.example.newsapplication.pages
 import com.example.newsapplication.ui.theme.BaseBlue
 import com.example.newsapplication.ui.theme.BaseGrey
 

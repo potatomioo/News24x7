@@ -90,7 +90,7 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
     }
 }
 
-@Preview
+@Preview()
 @Composable
 private fun Check() {
     OnboardingScreen()

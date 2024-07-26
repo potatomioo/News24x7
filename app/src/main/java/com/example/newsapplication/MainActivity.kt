@@ -1,5 +1,6 @@
 package com.example.newsapplication
 
+import android.content.res.Configuration
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -18,7 +19,8 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@Preview
+@Preview(name = "Light", showBackground = true, showSystemUi = true)
+@Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun final() {
     OnboardingScreen()

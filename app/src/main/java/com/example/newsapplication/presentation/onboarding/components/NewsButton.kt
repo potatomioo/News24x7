@@ -1,5 +1,6 @@
 package com.example.newsapplication.presentation.onboarding.components
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -47,6 +48,7 @@ fun NewsTextButton(
         shape = RoundedCornerShape(5.dp),
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
+            contentColor = if(isSystemInDarkTheme()) Color.White else Color.Black
         )
     ) {
         Text(

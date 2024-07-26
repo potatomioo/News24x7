@@ -12,3 +12,4 @@ val Pink40 = Color(0xFF7D5260)
 
 //Self
 val BaseBlue = Color(0xFF1D185F)
+val BaseGrey = Color(0xFF918E8A)

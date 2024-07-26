@@ -39,9 +39,6 @@ fun OnboardingPage(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start,
         modifier = Modifier
-            .background(
-                color = if (night) Color.Black else Color.White
-            )
             .fillMaxHeight(0.9f)
     ) {
         Image(
@@ -52,18 +49,18 @@ fun OnboardingPage(
             contentDescription = null,
             contentScale = ContentScale.Crop
         )
-        Spacer(modifier = modifier.height(20.dp))
+        Spacer(modifier = modifier.height(5.dp))
         Text(
             text = page.Title,
             modifier = Modifier
-                .padding(horizontal = 20.dp, vertical = 10.dp),
+                .padding(top = 0.dp,bottom = 5.dp, start = 20.dp, end = 20.dp),
             style = MaterialTheme.typography.titleLarge,
             color = if(isSystemInDarkTheme()) Color.White else Color.Black
         )
         Text(
             text = page.Des,
             modifier = Modifier
-                .padding(horizontal = 20.dp),
+                .padding(top = 0.dp,bottom = 10.dp, start = 20.dp, end = 20.dp),
             style = MaterialTheme.typography.titleLarge.copy(fontWeight = FontWeight.Normal, fontSize = 15.sp),
             color = if(isSystemInDarkTheme()) Color.White else Color.Black
         )
@@ -76,14 +73,14 @@ fun OnboardingPage(
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ){
-            
+
         }
     }
 }
 
 
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true, showSystemUi = true)
-@Composable
-fun OnboardingPagePreview() {
-        OnboardingPage(modifier = Modifier, page = pages[0])
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun OnboardingPagePreview() {
+//        OnboardingPage(modifier = Modifier, page = pages[0])
+//}

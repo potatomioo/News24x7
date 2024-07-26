@@ -11,6 +11,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import com.example.newsapplication.presentation.onboarding.components.OnboardingPage
+import com.example.newsapplication.presentation.onboarding.pages
 import com.example.newsapplication.ui.theme.NewsApplicationTheme
 
 class MainActivity : ComponentActivity() {
@@ -18,7 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
-
+            OnboardingPage(modifier = Modifier, page = pages[0])
         }
     }
 }

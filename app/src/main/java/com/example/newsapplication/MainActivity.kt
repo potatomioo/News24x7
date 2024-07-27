@@ -2,17 +2,34 @@ package com.example.newsapplication
 
 import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.lifecycle.lifecycleScope
 import com.example.newsapplication.presentation.onboarding.components.OnboardingScreen
+import com.example.newsapplication.usecase.AppEntryUseCases
+import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+
+    @Inject
+    lateinit var appEntryUseCases : AppEntryUseCases
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+        lifecycleScope.launch {
+            appEntryUseCases.readAppEntry().collect{
+                Log.d("Text",it.toString())
+            }
+        }
         setContent {
             OnboardingScreen()
         }

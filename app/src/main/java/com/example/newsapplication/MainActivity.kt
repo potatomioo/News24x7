@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
         installSplashScreen()
         lifecycleScope.launch {
             appEntryUseCases.readAppEntry().collect{
-                Log.d("Text",it.toString())
+                Log.d("TEXT",it.toString())
             }
         }
         setContent {

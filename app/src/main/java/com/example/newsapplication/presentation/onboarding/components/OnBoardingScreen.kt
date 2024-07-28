@@ -28,11 +28,14 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.tooling.preview.UiMode
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.DEFAULT_ARGS_KEY
+import com.example.newsapplication.presentation.onboarding.onboardingViewModel.OnboardingEvent
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun OnboardingScreen(modifier: Modifier = Modifier) {
+fun OnboardingScreen(
+    event : (OnboardingEvent) -> Unit
+) {
     Box (
         modifier = Modifier
             .fillMaxSize()
@@ -87,8 +90,8 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
                     Title = buttonState.value[1]
                 ) {
                     scope.launch{
-                        if(pagerState.currentPage == 3){
-                            //to home screen
+                        if(pagerState.currentPage == 2){
+                            event(OnboardingEvent.SaveAppEntry)
                         }
                         else {
                             pagerState.animateScrollToPage(
@@ -106,5 +109,5 @@ fun OnboardingScreen(modifier: Modifier = Modifier) {
 @Preview(name = "dark",showSystemUi = true, uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun Check() {
-    OnboardingScreen()
+
 }

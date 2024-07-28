@@ -73,7 +73,17 @@ dependencies {
 
     //splash screen
     implementation("androidx.core:core-splashscreen:1.0.1")
+
+    //Data store
     implementation("androidx.datastore:datastore-preferences:1.0.0")
+
+    //dagger hilt dependencies
     implementation("com.google.dagger:hilt-android:2.46")
     kapt("com.google.dagger:hilt-android-compiler:2.46")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
+
+    //compose navigation
+    val nav_version = "2.7.7"
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
 }

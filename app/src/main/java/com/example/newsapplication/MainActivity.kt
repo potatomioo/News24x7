@@ -8,10 +8,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.lifecycleScope
 import com.example.newsapplication.presentation.onboarding.components.OnboardingScreen
+import com.example.newsapplication.presentation.onboarding.onboardingViewModel.OnboardingViewModel
 import com.example.newsapplication.usecase.AppEntryUseCases
 import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.lifecycle.HiltViewModel
+import dagger.hilt.processor.internal.definecomponent.codegen._dagger_hilt_android_components_ViewModelComponent
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,18 +24,25 @@ import javax.inject.Inject
 class MainActivity : ComponentActivity() {
 
     @Inject
-    lateinit var appEntryUseCases : AppEntryUseCases
+    lateinit var useCases : AppEntryUseCases
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
+
         lifecycleScope.launch {
-            appEntryUseCases.readAppEntry().collect{
-                Log.d("TEXT",it.toString())
+            useCases.readAppEntry().collect{
+                Log.d("Text",it.toString())
             }
         }
-        setContent {
-            OnboardingScreen()
+
+        setContent{
+            val viewModel : OnboardingViewModel = hiltViewModel()
+            OnboardingScreen (
+                event = {
+                    viewModel.onEvent(it)
+                }
+            )
         }
     }
 }
@@ -40,7 +51,7 @@ class MainActivity : ComponentActivity() {
 @Preview(name = "Dark", uiMode = Configuration.UI_MODE_NIGHT_YES)
 @Composable
 private fun final() {
-    OnboardingScreen()
+
 }
 
 // Clean architecture has three layers as Presentation, Data and Domain.

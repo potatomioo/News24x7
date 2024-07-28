@@ -5,11 +5,14 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.lifecycleScope
+import com.example.newsapplication.presentation.navgraph.NavGraph
 import com.example.newsapplication.presentation.onboarding.components.OnboardingScreen
 import com.example.newsapplication.presentation.onboarding.onboardingViewModel.OnboardingViewModel
 import com.example.newsapplication.usecase.AppEntryUseCases
@@ -23,26 +26,20 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
-    @Inject
-    lateinit var useCases : AppEntryUseCases
+    val viewModel by viewModels<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        installSplashScreen()
-
-        lifecycleScope.launch {
-            useCases.readAppEntry().collect{
-                Log.d("Text",it.toString())
+        installSplashScreen().apply {
+            setKeepOnScreenCondition{
+                viewModel._splashCondition
             }
         }
 
+
         setContent{
-            val viewModel : OnboardingViewModel = hiltViewModel()
-            OnboardingScreen (
-                event = {
-                    viewModel.onEvent(it)
-                }
-            )
+            val startDestination = viewModel.startDestination
+            NavGraph(startDestination = startDestination)
         }
     }
 }

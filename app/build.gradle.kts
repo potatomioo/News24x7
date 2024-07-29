@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.jetbrainsKotlinAndroid)
     id("kotlin-kapt")
     id("com.google.dagger.hilt.android")
+    id ("kotlin-parcelize")
+
 }
 
 android {
@@ -86,4 +88,18 @@ dependencies {
     val nav_version = "2.7.7"
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
+
+    //Accompanist
+    implementation ("com.google.accompanist:accompanist-systemuicontroller:0.31.4-beta")
+
+    //Compose Foundation
+    implementation ("androidx.compose.foundation:foundation:1.4.3")
+
+    //Coil
+    implementation("io.coil-kt:coil-compose:2.4.0")
+
+    //paging 3
+    val paging_version = "3.1.1"
+    implementation ("androidx.paging:paging-runtime:$paging_version")
+    implementation( "androidx.paging:paging-compose:3.2.0-rc01")
 }

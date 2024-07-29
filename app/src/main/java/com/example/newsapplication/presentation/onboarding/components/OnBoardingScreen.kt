@@ -36,6 +36,11 @@ import kotlinx.coroutines.launch
 fun OnboardingScreen(
     event : (OnboardingEvent) -> Unit
 ) {
+    Box (
+        modifier = Modifier
+            .fillMaxSize()
+            .background(color = if (isSystemInDarkTheme()) Color.Black else Color.White)
+    ){}
     Column(
         modifier = Modifier
             .fillMaxSize()

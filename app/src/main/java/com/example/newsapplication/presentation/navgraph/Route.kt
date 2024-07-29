@@ -14,6 +14,6 @@ sealed class Route(
     //sub navigation
     object AppStartNavigation : Route(route = "appStartNavigation")
     object NewsNavigation : Route(route = "newsNavigation")
-    object NewsNavigatorScreen : Route(route = "newsNavigatorScreen")
+    object NewsNavigatorScreen : Route(route = "newsNavigator")
 
 }

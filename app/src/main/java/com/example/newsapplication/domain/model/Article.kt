@@ -1,4 +1,4 @@
-package com.example.newsapplication.data.manager.remote.dataTransferObject
+package com.example.newsapplication.domain.model
 
 data class Article(
     val author: String,
